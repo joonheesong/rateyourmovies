@@ -3,10 +3,21 @@ from django.utils import timezone
 
 # Create your models here.
 class User(models.Model):
-	pass
+	username = models.CharField(max_length=50, primary_key=True)
+	password = models.CharField(max_length=200)
+	email = models.EmailField()
 
 class Movie(models.Model):
-	pass
+	m_id = models.AutoField(primary_key=True)
+	title = models.CharField(max_length=100)
+	director = models.CharField(max_length=100)
+	genre = models.CharField(max_length=50)
+	runtime = models.PositiveIntegerField()
+	poster = models.ImageField()
+	published_year = models.PositiveIntegerField()
+
 
 class Post(models.Model):
-	pass
+	m_id = models.ForeignKey('Movie.m_id')
+	username = models.ForeignKey('User.username')
+	rating = models.FloatField();
