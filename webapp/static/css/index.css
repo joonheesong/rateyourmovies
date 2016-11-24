@@ -37,7 +37,7 @@ body {
 }
 
 .link--kukuri:hover {
-	color: #D9D9D9;
+	color: #a3a3a3;
 }
 
 .link--kukuri::after {
@@ -67,7 +67,7 @@ body {
 	position: absolute;
 	z-index: 2;
 	overflow: hidden;
-	color: #A3A3A3;
+	color: #e6e6e6;
 	white-space: nowrap;
 	width: 0%;
 	-webkit-transition: width 0.4s 0.3s;

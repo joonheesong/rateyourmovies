@@ -1,14 +1,16 @@
-<html>
-	<head>
-		<title>Rate Your Movies</title>
-	</head>
+{% extends 'base.html' %}
 
-	<body>
-		<!-- Sign Up Form -->
-		<form id="signup" method="post" action="{% url 'signup' %}">
-			{% csrf_token %}
-			{{ userform.as_p }}
-		</form>
-		
-	</body>
-</html>
+{% block current_css %}
+	<link rel="stylesheet" type="text/css" href="/static/css/signup.css" />
+{% endblock current_css %}
+
+{% block content %}
+
+<div class="message">
+	<form id="signup" method="post" action="{% url 'signup' %}">
+		{% csrf_token %}
+		{{ userform.as_p }}
+	</form>
+</div>
+
+{% endblock content %}
