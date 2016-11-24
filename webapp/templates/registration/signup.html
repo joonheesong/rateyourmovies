@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Rate Your Movies</title>
+	</head>
+
+	<body>
+		<!-- Sign Up Form -->
+		<form id="signup" method="post" action="{% url 'signup' %}">
+			{% csrf_token %}
+			{{ userform.as_p }}
+		</form>
+		
+	</body>
+</html>

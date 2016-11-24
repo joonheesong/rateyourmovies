@@ -7,6 +7,13 @@ class User(models.Model):
 	password = models.CharField(max_length=200)
 	email = models.EmailField()
 
+	def set_password(self, pw):
+		password = pw
+
+	def __str__(self):
+		return self.username
+
+'''
 class Movie(models.Model):
 	m_id = models.AutoField(primary_key=True)
 	title = models.CharField(max_length=100)
@@ -20,4 +27,5 @@ class Movie(models.Model):
 class Post(models.Model):
 	m_id = models.ForeignKey('Movie.m_id')
 	username = models.ForeignKey('User.username')
-	rating = models.FloatField();
+	rating = models.FloatField()
+'''

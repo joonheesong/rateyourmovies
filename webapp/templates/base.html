@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+	{% block current_css %}{% endblock %}
+	<link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Work+Sans:900" rel="stylesheet">
+	<title>Rate Your Movies</title>
+</head>
+
+
+<body>
+	<!-- HEADER -->
+	<div class="wrap headerwrap">
+		<header class="header cf">
+			<div class="logo"><a href="/">RateYourMovie</a></div>
+			<div class="topmenu">
+				<dl>
+					<dt class="hide">Menu</dt>
+					<dd><a href="#">ABOUT</a></dd>
+					<dd><a href="/signup">REGISTER</a></dd>
+					<dd><a href="#">LOGIN</a></dd>
+				</dl>
+			</div>
+		</header>
+	</div>
+	<!-- HEADER -->
+
+	<!-- BODY -->
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+
+
+
+</html>
