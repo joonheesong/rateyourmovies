@@ -1,16 +1,81 @@
 {% extends 'base.html' %}
 
 {% block current_css %}
-	<link rel="stylesheet" type="text/css" href="/static/css/signup.css" />
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/signup.css" />
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/registerButton.css" />
 {% endblock current_css %}
 
 {% block content %}
-
-<div class="message">
-	<form id="signup" method="post" action="{% url 'signup' %}">
-		{% csrf_token %}
-		{{ userform.as_p }}
-	</form>
-</div>
-
+		<div class="registration">
+			<form class="registerform" id="signup" method="post" action="{% url 'signup' %}">
+				{% csrf_token %}
+				<span class="input input--chisato">
+					<input class="input__field input__field--chisato" type="text" id="{{ userform.username.id_for_label }}" name="username" maxlength="50"/>
+					<label class="input__label input__label--chisato" for="{{ userform.username.id_for_label }}">
+						<span class="input__label-content input__label-content--chisato" data-content="Username">Username</span>
+					</label>
+				</span>
+				<span class="input input--chisato">
+					<input class="input__field input__field--chisato" type="text" id="{{ userform.password1.id_for_label }}" name="password1"/>
+					<label class="input__label input__label--chisato" for="{{ userform.password1.id_for_label }}">
+						<span class="input__label-content input__label-content--chisato" data-content="Password">Password</span>
+					</label>
+				</span>
+				<span class="input input--chisato">
+					<input class="input__field input__field--chisato" type="text" id="{{ userform.password2.id_for_label }}" name="password2"/>
+					<label class="input__label input__label--chisato" for="{{ userform.password2.id_for_label }}">
+						<span class="input__label-content input__label-content--chisato" data-content="Password (Confirm)">Password (Confirm)</span>
+					</label>
+				</span>
+				<span class="input input--chisato">
+					<input class="input__field input__field--chisato" type="email" id="{{ userform.email.id_for_label }}" name="email"/>
+					<label class="input__label input__label--chisato" for="{{ userform.email.id_for_label }}">
+						<span class="input__label-content input__label-content--chisato" data-content="E-mail">E-mail</span>
+					</label>
+				</span>
+				<span class ="box">
+					<button class="button button--winona button--text-thick button--inverted" data-text="Register" type="submit">
+						<span>Register</span>
+					</button>
+				</span>
+			</form>
+		</div>
 {% endblock content %}
+{% block js %}
+	<script src="/static/js/classie.js"></script>
+	<script>
+		(function() {
+			// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+			if (!String.prototype.trim) {
+				(function() {
+					// Make sure we trim BOM and NBSP
+					var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+					String.prototype.trim = function() {
+						return this.replace(rtrim, '');
+					};
+				})();
+			}
+
+			[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+				// in case the input is already filled..
+				if( inputEl.value.trim() !== '' ) {
+					classie.add( inputEl.parentNode, 'input--filled' );
+				}
+
+				// events:
+				inputEl.addEventListener( 'focus', onInputFocus );
+				inputEl.addEventListener( 'blur', onInputBlur );
+			} );
+
+			function onInputFocus( ev ) {
+				classie.add( ev.target.parentNode, 'input--filled' );
+			}
+
+			function onInputBlur( ev ) {
+				if( ev.target.value.trim() === '' ) {
+					classie.remove( ev.target.parentNode, 'input--filled' );
+				}
+			}
+		})();
+	</script>
+{% endblock js %}

@@ -1,22 +1,23 @@
 body {
-	background: url('../image/signupbg.png');
+	background: url('../image/signupbg.jpg');
 	background-position: center top;
 	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .registration {
-	width:100%;
 	font-size: 150%;
 	padding: 3em 0;
-	margin: 0 auto;
-	overflow: hidden;
 }
 
-.registerform {
-    display: inline-block;
-    text-align: center;
-    width:100%;
+.registration h2 {
+	margin: 0 0 2em;
+	opacity: 0.1;
+}
+
+.registration p {
+	margin: 1em 0;
+	padding: 5em 0 0 0;
+	font-size: 0.65em;
 }
 
 .input {
@@ -24,8 +25,8 @@ body {
 	z-index: 1;
 	display: inline-block;
 	margin: 1em;
-	max-width: 70%;
-	width: calc(100% - 2em);
+	max-width: 500px;
+	width: calc(100% - 3em);
 	vertical-align: top;
 }
 
@@ -73,6 +74,9 @@ body {
 	width: 100%;
 }
 
+
+/* Individual styles */
+
 /* Chisato */
 
 .input--chisato {
@@ -83,7 +87,7 @@ body {
 	width: 100%;
 	padding: 0.8em 0.5em;
 	background: transparent;
-	border: 5px solid;
+	border: 2px solid;
 	color: #b5b5b5;
 	-webkit-transition: border-color 0.25s;
 	transition: border-color 0.25s;

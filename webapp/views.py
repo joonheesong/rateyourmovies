@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.contrib.auth.forms import UserCreationForm
+from webapp.forms import RegistrationForm
 
 def index(request):
 	return render(request, 'pages/index.html', {})
@@ -10,17 +10,20 @@ def signup(request):
 	""" Registration of a user """
 
 	if request.method == "POST":
-		userform = UserCreationForm(request.POST)
+		userform = RegistrationForm(request.POST)
 		if userform.is_valid():
-			userform.save()
+			user = userform.save()
+			user.set_password(user.password)
+			user.save()
 
 			return HttpResponseRedirect(
 				reverse('signup_ok')
 			)
+
 	elif request.method == "GET":
-		userform = UserCreationForm()
+		userform = RegistrationForm()
 
 	return render(request,
 				  'registration/signup.html',
 				  {"userform": userform}
-	)
+				  )

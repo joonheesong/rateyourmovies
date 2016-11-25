@@ -1,0 +1,79 @@
+li { list-style: none; }
+a { text-decoration: none; color: black; }
+*, *:after, *:before { box-sizing: border-box;  }
+
+.clearfix:before, .clearfix:after { display: table;  content: ''; }
+.clearfix:after { clear: both; }
+.cf:after {
+	content: "";
+	display: block;
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* FONTS
+font-family: 'Work Sans', sans-serif;
+font-family: 'Bowlby One SC', cursive;
+*/
+
+/* Header CSS */
+.hide {
+	position: absolute;
+	left: 0; top: 0;
+	text-indent: -9999em;
+	width: 0; height: 0;
+}
+
+.wrap {
+	width: 100%;
+	height: 80px;
+}
+
+.header {
+	width: 100%;
+	margin: auto;
+	position: relative;
+}
+
+.header .topmenu {
+	float: right;
+	padding: 1% 5%;
+	font-family: 'Work Sans', sans-serif;
+	font-size: 1.2em;
+}
+
+.header .topmenu dl dd { display: inline; }
+.header .topmenu dl dd a {
+	color: #FFF;
+	padding: 0 7px;
+}
+
+.logo {
+	background-color: hsla(0, 0%, 0%, 0.01);
+	height: 55px;
+	width: 55px;
+	float: left;
+	font-size: 2.5em;
+	font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+    margin: 1% 5%;
+}
+
+.logo a {
+	color: #FFF;
+    line-height: 55px;
+}
+
+/* Body CSS */
+
+.container {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+}
+.container:after {
+	display: block;
+	content: '';
+	clear: both;
+}

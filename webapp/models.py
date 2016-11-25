@@ -5,7 +5,7 @@ from django.utils import timezone
 class User(models.Model):
 	username = models.CharField(max_length=50, primary_key=True)
 	password = models.CharField(max_length=200)
-	email = models.EmailField()
+	email = models.EmailField(unique=True)
 
 	def set_password(self, pw):
 		password = pw

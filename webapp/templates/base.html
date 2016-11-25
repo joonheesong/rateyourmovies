@@ -1,11 +1,14 @@
-{% load staticfiles %}
+{% load static %}
 <html>
 <head>
+	{% load compress %}
+	{% compress css %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 	{% block current_css %}{% endblock %}
 	<link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Work+Sans:900" rel="stylesheet">
 	<title>Rate Your Movies</title>
+	{% endcompress %}
 </head>
 
 
@@ -31,6 +34,9 @@
 		{% block content %}
 		{% endblock %}
 	</div>
+
+	{% block js %}
+	{% endblock %}
 </body>
 
 
