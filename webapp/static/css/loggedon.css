@@ -6,8 +6,8 @@ dd.login {
 	display: none !important;
 }
 
-.logout {
-	display: inline;
+dd.logout {
+	display: inline !important;
 }
 
 body {

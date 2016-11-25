@@ -3,9 +3,22 @@
 {% block content %}
 	<!-- Login Form -->
 	<h2>Login</h2>
-	<form id="login" method="post">
+	<form class="loginform" action="/login/" method="post">
 		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit">Login</button>
+		<div class="input">
+			<label class="input__label" for="username">Username</label>
+			<input type="text" id="username" name="username">
+		</div>
+
+		<div class="input">
+			<label class="input__label" for="password">Password</label>
+			<input type="password" name="password" id="password">
+		</div>
+
+		<div class ="box">
+			<button class="button button--winona button--text-thick button--inverted" data-text="Login" type="submit">
+				<span>Login</span>
+			</button>
+		</div>
 	</form>
 {% endblock content %}
