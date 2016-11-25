@@ -1,4 +1,13 @@
-<center>
-Sucessfully signed up. Do you want to log in? <br>
-<a href="<% url 'login_url' %}">Log In</a>
-</center>
+{% extends 'base.html' %}
+
+{% block current_css %}
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css" />
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/signup.css" />
+{% endblock current_css %}
+
+{% block content %}
+	<div class="message">
+		<p> Sucessfully signed up.<br>Do you want to log in?</p>
+		<a class='link link--kukuri' href="<% url 'login' %}" data-letters="Log In">Log In</a>
+	</div>
+{% endblock content %}

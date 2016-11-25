@@ -1,5 +1,6 @@
 body {
-	background: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3) ), url('../image/civil_war.jpg');
+	background: url('../image/civil_war.png');
+	background-size: cover;
 	background-position: center top;
 	background-repeat: no-repeat;
 }

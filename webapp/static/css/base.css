@@ -65,6 +65,10 @@ font-family: 'Bowlby One SC', cursive;
     line-height: 55px;
 }
 
+dd.logout {
+	display:none !important;
+}
+
 /* Body CSS */
 
 .container {
