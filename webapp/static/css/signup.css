@@ -5,6 +5,10 @@ body {
 	background-size: cover;
 }
 
+.errorlist {
+	display:none;
+}
+
 .registration {
 	width:100%;
 	font-size: 150%;

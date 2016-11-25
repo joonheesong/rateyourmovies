@@ -9,26 +9,30 @@
 		<div class="registration">
 			<form class="registerform" id="signup" method="post" action="{% url 'signup' %}">
 				{% csrf_token %}
+				{{ userform.username.errors }}
 				<span class="input input--chisato">
-					<input class="input__field input__field--chisato" type="text" id="{{ userform.username.id_for_label }}" name="username" maxlength="50"/>
+					{{ userform.username }}
 					<label class="input__label input__label--chisato" for="{{ userform.username.id_for_label }}">
 						<span class="input__label-content input__label-content--chisato" data-content="Username">Username</span>
 					</label>
 				</span>
+				{{ userform.password1.errors }}
 				<span class="input input--chisato">
-					<input class="input__field input__field--chisato" type="text" id="{{ userform.password1.id_for_label }}" name="password1"/>
+					{{ userform.password1 }}
 					<label class="input__label input__label--chisato" for="{{ userform.password1.id_for_label }}">
 						<span class="input__label-content input__label-content--chisato" data-content="Password">Password</span>
 					</label>
 				</span>
+				{{ userform.password2.errors }}
 				<span class="input input--chisato">
-					<input class="input__field input__field--chisato" type="text" id="{{ userform.password2.id_for_label }}" name="password2"/>
+					{{ userform.password2 }}
 					<label class="input__label input__label--chisato" for="{{ userform.password2.id_for_label }}">
 						<span class="input__label-content input__label-content--chisato" data-content="Password (Confirm)">Password (Confirm)</span>
 					</label>
 				</span>
+				{{ userform.email.errors }}
 				<span class="input input--chisato">
-					<input class="input__field input__field--chisato" type="email" id="{{ userform.email.id_for_label }}" name="email"/>
+					{{ userform.email }}
 					<label class="input__label input__label--chisato" for="{{ userform.email.id_for_label }}">
 						<span class="input__label-content input__label-content--chisato" data-content="E-mail">E-mail</span>
 					</label>
