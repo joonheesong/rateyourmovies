@@ -45,7 +45,7 @@ def login_view(request):
 			else:
 				return HttpResponse("Inactive user")
 		else:
-			return HttpResponseRedirect('registration/login.html')
+			return HttpResponseRedirect('/login/')
 			
 	return render(request, "registration/login.html", {'redirect_to': '/home/'})
 

@@ -9,7 +9,7 @@ body {
 	display:none;
 }
 
-.registration {
+.content-login {
 	width:100%;
 	font-size: 150%;
 	padding: 3em 0;
@@ -17,7 +17,7 @@ body {
 	overflow: hidden;
 }
 
-.registerform {
+.loginform {
     display: inline-block;
     text-align: center;
     width:100%;
