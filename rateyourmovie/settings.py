@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from datetime import datetime
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -103,3 +104,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# API Key for tmdbsimple API
+MY_API_KEY = '666038f66859e2a1a566d589b3fe1e34'
+IMG_SRC = 'https://image.tmdb.org/t/p/w500'
+
+# Today's Date
+current = datetime.now()
+TODAY = '-'.join([str(current.year), str(current.month), str(current.day)])

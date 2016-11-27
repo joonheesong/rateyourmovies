@@ -6,6 +6,10 @@ dd.login {
 	display: none !important;
 }
 
+dd.search {
+	display: inline !important;
+}
+
 dd.logout {
 	display: inline !important;
 }

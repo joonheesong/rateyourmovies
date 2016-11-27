@@ -4,7 +4,7 @@
 	{% load compress %}
 	{% compress css %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}?{% now 'U' %}" />
 	{% block current_css %}{% endblock %}
 	<link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC|Work+Sans:900" rel="stylesheet">
 	<title>Rate Your Movies</title>
@@ -22,7 +22,8 @@
 					<dt class="hide">Menu</dt>
 					<dd class="about" ><a href="#">ABOUT</a></dd>
 					<dd class="register"><a href="/signup">REGISTER</a></dd>
-					<dd class="login"><a href="/login/">LOGIN</a></dd>
+					<dd class="login"><a href="/login">LOGIN</a></dd>
+					<dd class="search"><a href="/search?query=">SEARCH</a></dd>
 					<dd class="logout"><a href="/logout">LOGOUT</a></dd>
 				</dl>
 			</div>
