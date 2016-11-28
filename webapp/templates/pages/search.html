@@ -3,6 +3,7 @@
 {% block current_css %}
 	<link rel="stylesheet" type="text/css" media='all' href="/static/css/search.css?{% now 'U' %}" />
 	<link rel="stylesheet" type="text/css" media='all' href="/static/css/inputbox.css?{% now 'U' %}" />
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/result.css?{% now 'U' %}" />
 	<!--[if IE]>
   	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -23,20 +24,18 @@
 		</section>
 
 		<section class="result-section">
-			{% for key, val in search_result.items %}
-				<div class="result result--yonten">
-					<div class="result__item poster">
-						<img src="{{ val.poster_path }}"/>
+			<div class="result result--yonten">
+				{% for key, val in search_result.items %}
+					<div class="result__item">
+						<h3 class="result__title">{{ val.title }}</h3>
+						<h4 class="result__release-date">{{ val.release_date }}</h4>
+						<div class="result__poster">
+							<img src="{{ val.poster_path }}"/>
+						</div>
+						<button class="result__action"><a href="#">Choose</a></button>
 					</div>
-					<div class="result__item title">
-						<span>search_result.{{ forloop.counter0 }}.title</span>
-					</div>
-					<div class="result__item release_date">
-						<span>search_result.{{ forloop.counter0 }}.release_date</span>
-					</div>
-					<button class="result__action">Choose</button>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</section>
 {% endblock content %}
 {% block js %}

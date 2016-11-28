@@ -107,7 +107,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # API Key for tmdbsimple API
 MY_API_KEY = '666038f66859e2a1a566d589b3fe1e34'
-IMG_SRC = 'https://image.tmdb.org/t/p/w500'
+IMG_SRC = 'https://image.tmdb.org/t/p/w185'
 
 # Today's Date
 current = datetime.now()
