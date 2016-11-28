@@ -8,9 +8,6 @@ class User(models.Model):
 	password = models.CharField(max_length=200)
 	email = models.EmailField(unique=True)
 
-	def set_password(self, pw):
-		password = pw
-
 	def __str__(self):
 		return self.username
 
@@ -33,7 +30,7 @@ class Movie(models.Model):
 
 class Post(models.Model):
 	""" Post Model """
-	m_id = models.ForeignKey('Movie', db_column="m_id", on_delete=models.CASCADE, unique=True)
-	username = models.ForeignKey('User', db_column="username", on_delete=models.CASCADE, unique=True)
+	m_id = models.ForeignKey('Movie', db_column="m_id", on_delete=models.CASCADE)
+	username = models.ForeignKey('User', db_column="username", on_delete=models.CASCADE)
 	rating = models.FloatField()
 	review = models.TextField(null=True)

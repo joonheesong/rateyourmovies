@@ -24,9 +24,6 @@ def signup(request):
 		userform = RegistrationForm(request.POST)
 		if userform.is_valid():
 			user = userform.save()
-			user.set_password(user.password)
-			user.save()
-
 			return HttpResponseRedirect(
 				reverse('signup_ok')
 			)
@@ -42,10 +39,9 @@ def signup(request):
 def login_view(request):
 	""" Login """
 	if request.method == "POST":
-		username = request.POST['username']
-		password = request.POST['password']
+		username = request.POST.get('username')
+		password = request.POST.get('password')
 		user = authenticate(username=username, password=password)
-
 		if user is not None:
 			if user.is_active:
 				login(request, user)
