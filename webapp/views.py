@@ -86,10 +86,14 @@ def search_movie(request):
 					found.save()
 				search_result[i] = {"id": m_id,
 									"title": title,
-									"poster_path": settings.IMG_SRC + poster_path,
 									"release_date": release_date}
-				print(title)
+				if poster_path:
+					search_result[i]['poster_path'] = settings.IMG_SRC + poster_path
+				else:
+					search_result[i]['poster_path'] = "none"
+
 				i += 1
+
 		return render(request, 'pages/search.html', {'search_result': search_result})
 
 	return render(request, 'pages/search.html', {'search_result': {}})
