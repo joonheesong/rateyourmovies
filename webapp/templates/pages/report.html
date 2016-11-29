@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block current_css %}
+	<link rel="stylesheet" type="text/css" href="/static/css/loggedon.css?{% now 'U' %}" />
+{% endblock current_css %}
+
+{% block content %}
+	<!-- BODY -->
+	<div class="container">
+		<table class="report" style="width:90%;color:#fff;font-size:2em;margin-top:2em;">
+			<tr>
+				<th>Movie</th>
+				<th>Watched</th>
+				<th>Average Ratinge</th>
+			</tr>
+			{% for movie, total, rating in report %}
+			<tr>
+				<th>{{ movie.title }}</th>
+				<th>{{ total }}</th>
+				<th>{{ rating }}</th>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock content %}

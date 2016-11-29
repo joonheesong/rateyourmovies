@@ -8,6 +8,7 @@ import tmdbsimple as tmdb
 from webapp.models import Movie, Posting, Users
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Count, Avg
 from ast import literal_eval
 
 # Set up API key for tmdb
@@ -169,11 +170,25 @@ def listing(request):
 														'current_review': current_review})
 
 
+def report(request):
+	""" For admin purpose,
+	Generate report for number of times the movie has been watched and its rating"""
 
+	# Use Posting object
+	# Group by movie, then count the number of entry and average rating
 
+	postings = Posting.objects.all()
 
+	report = []
 
+	for result in postings.values('m_id').annotate(total=Count('m_id')).order_by('-total'):
+		movie = Movie.objects.get(m_id=result['m_id'])
+		total = result['total']
+		rating = postings.filter(m_id=movie).aggregate(Avg('rating'))['rating__avg']
 
+		report.append((movie, total, rating))
+
+	return render(request, 'pages/report.html', {'report': report})
 
 
 

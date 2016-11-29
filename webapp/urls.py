@@ -15,4 +15,5 @@ urlpatterns = [
 	url(r'^search/$', views.search_movie, name="search"),
 	url(r'^review/$', views.review_movie, name="review"),
 	url(r'^listing/$', views.listing, name="listing"),
+	url(r'^report/$', views.report, name="report"),
 ]

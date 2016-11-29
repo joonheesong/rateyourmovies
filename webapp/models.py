@@ -42,3 +42,6 @@ class Posting(models.Model):
 
 	def update_rating(self, new_rating):
 		self.rating = new_rating
+
+	def __str__(self):
+		return "review of "+self.m_id.title+", reviewed by "+self.username.username

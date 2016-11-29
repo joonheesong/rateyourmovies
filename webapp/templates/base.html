@@ -27,6 +27,9 @@
 					<dd class="login"><a href="/login">LOGIN</a></dd>
 					<dd class="search"><a href="/search?query=">SEARCH</a></dd>
 					<dd class="list"><a href="/listing?m_id=-1">LIST</a></dd>
+					{% if request.user.is_superuser %}
+					<dd class="report"><a href="/report">REPORT</a></dd>
+					{% endif %}
 					<dd class="logout"><a href="/logout">LOGOUT</a></dd>
 				</dl>
 			</div>
