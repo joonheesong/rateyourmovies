@@ -71,6 +71,10 @@ dd.search {
 	display:none !important;
 }
 
+dd.list {
+	display:none !important;
+}
+
 /* Body CSS */
 
 .container {

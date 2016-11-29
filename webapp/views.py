@@ -145,26 +145,27 @@ def review_movie(request):
 
 def listing(request):
 	m_id = int(request.GET['m_id'])
-	# Find current movie
-	movie = Movie.objects.get(m_id=m_id)
-
-	# Find all movies that user rated.
+	movie = None
 	user = Users.objects.get(username=request.user.username)
+
+	if m_id > 0:
+		# Find current movie
+		movie = Movie.objects.get(m_id=m_id)
+	else:
+		try:
+			movie = Posting.objects.filter(username=user)[0].m_id
+		except:
+			return HttpResponseRedirect('/search?query=')
+		
+	# Find all movies that user rated.
 	current_review = Posting.objects.get(m_id=movie, username=user)
 	movie_list = {}
 	for review in Posting.objects.filter(username=user):
-		movie_list[review.m_id.m_id] = review.m_id.title
+		movie_list[review.m_id.title] = review.m_id.m_id
 
-
-	print("********** MOVIE ***********")
-	print(movie)
-	print("******** MOVIE_LIST ********")
-	print(movie_list)
-	print("****************************")
-
-	return HttpResponseRedirect('/home/')
-	#return render(request, 'pages/personal_list.html', {'movie': movie,
-	#													'movie_list': movie_list})
+	return render(request, 'pages/personal_list.html', {'movie': movie,
+														'movie_list': sorted(movie_list.items()),
+														'current_review': current_review})
 
 
 

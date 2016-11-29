@@ -14,8 +14,12 @@ dd.logout {
 	display: inline !important;
 }
 
+dd.list {
+	display: inline !important;
+}
+
 body {
-	background: url('../image/reviewbg.jpg'); 
+	background: url('../image/reviewbg.png'); 
 	background-position: center top;
 	background-size: cover;
 }
@@ -85,6 +89,6 @@ body {
 
 .review__action:hover,
 .review__action:focus {
-	color: #85c34a;
+	color: #fff;
 	background: #da6484;
 }

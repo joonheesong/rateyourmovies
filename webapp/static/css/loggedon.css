@@ -14,6 +14,10 @@ dd.logout {
 	display: inline !important;
 }
 
+dd.list {
+	display: inline !important;
+}
+
 body {
 	background: url('../image/home.png');
 	background-size: cover;
