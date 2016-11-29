@@ -34,8 +34,11 @@ class Posting(models.Model):
 	""" Post Model """
 	m_id = models.ForeignKey('Movie', db_column="m_id", on_delete=models.CASCADE)
 	username = models.ForeignKey('Users', db_column="username", on_delete=models.CASCADE)
-	rating = models.FloatField(null=True)
+	rating = models.IntegerField(null=True)
 	review = models.TextField(null=True)
 
 	def new_review(self, new_review):
 		self.review = new_review
+
+	def update_rating(self, new_rating):
+		self.rating = new_rating

@@ -18,6 +18,10 @@
 				<div class="column">
 					<span class="title">Review for {{movie.title}}</span>
 				</div>
+				<div class="column rating">
+					<span class="rating-{{ current_review.rating }} fill" ></span>
+					<span class="rating-{{ current_review.rating }} empty" ></span>
+				</div>
 				<div class="column">
 					<span class="review">{{ current_review.review }}</span>
 				</div>

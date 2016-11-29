@@ -109,7 +109,7 @@ def review_movie(request):
 	if request.method =="POST":
 		reviewform = ReviewForm(request.POST)
 		new_post = None
-
+		rating = request.POST.get('rating')
 		if reviewform.is_valid():
 			m_id = Movie.objects.get(m_id=reviewform.cleaned_data['m_id'])
 			user = Users.objects.get(username=request.user.username)
@@ -118,11 +118,12 @@ def review_movie(request):
 			try:
 				new_post = Posting.objects.get(m_id=m_id, username=user)
 				new_post.new_review(new_review=review)
+				new_post.update_rating(new_rating=rating)
 				new_post.save()
 			except ObjectDoesNotExist:
-				new_post = Posting(m_id=m_id, username=user, review=review)
+				new_post = Posting(m_id=m_id, username=user, review=review, rating=rating)
 				new_post.save()
-			
+
 		listing_url = '/listing?m_id=' + str(new_post.m_id.m_id)
 		
 		return HttpResponseRedirect(listing_url)
@@ -162,7 +163,7 @@ def listing(request):
 	movie_list = {}
 	for review in Posting.objects.filter(username=user):
 		movie_list[review.m_id.title] = review.m_id.m_id
-
+		
 	return render(request, 'pages/personal_list.html', {'movie': movie,
 														'movie_list': sorted(movie_list.items()),
 														'current_review': current_review})

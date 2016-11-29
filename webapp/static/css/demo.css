@@ -48,7 +48,7 @@ a {
 	text-align: right;
 }
 
-.column:nth-child(3) {
+.column:nth-child(4) {
 	position: absolute;
 	bottom: 3%;
 	right: 5%;
@@ -84,4 +84,47 @@ button {
 button:hover,
 button:active {
 	background: #da6484;
+}
+
+
+.column.rating {
+	font-family:"FontAwesome", Arial;
+	font-size:1.8em;
+}
+.fill {
+	color:yellow;
+}
+.empty {
+	color:white;
+}
+.rating-None.empty::before,
+.rating-0.empty::before {
+	content:"\f006\00a0\f006\00a0\f006\00a0\f006\00a0\f006";
+}
+.rating-1.fill::before {
+	content:"\f005";
+}
+.rating-1.empty::before {
+	content:"\f006\00a0\f006\00a0\f006\00a0\f006";
+}
+.rating-2.fill::before {
+	content:"\f005\00a0\f005";
+}
+.rating-2.empty::before {
+	content:"\f006\00a0\f006\00a0\f006";
+}
+.rating-3.fill::before {
+	content:"\f005\00a0\f005\00a0\f005";
+}
+.rating-3.empty::before {
+	content:"\f006\00a0\f006";
+}
+.rating-4.fill::before {
+	content:"\f005\00a0\f005\00a0\f005\00a0\f005";
+}
+.rating-4.empty::before {
+	content:"\f006";
+}
+.rating-5.fill::before {
+	content:"\f005\00a0\f005\00a0\f005\00a0\f005\00a0\f005";
 }

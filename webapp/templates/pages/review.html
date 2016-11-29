@@ -3,6 +3,7 @@
 
 {% block current_css %}
 	<link rel="stylesheet" type="text/css" media='all' href="/static/css/review.css?{% now 'U' %}" />
+	<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.min.css">
 {% endblock current_css %}
 
 {% block content %}
@@ -16,6 +17,14 @@
 
 			<div class="review__input">
 				<form id="review_form", action="/review/" method="post" accept-charset="utf-8">
+					<select name="rating" class ="dropdown" style="font-family: 'FontAwesome', Arial;">
+						<option value="0">&#xf006;&#xf006;&#xf006;&#xf006;&#xf006;</option>
+						<option value="1">&#xf005;&#xf006;&#xf006;&#xf006;&#xf006;</option>
+						<option value="2">&#xf005;&#xf005;&#xf006;&#xf006;&#xf006;</option>
+						<option value="3">&#xf005;&#xf005;&#xf005;&#xf006;&#xf006;</option>
+						<option value="4">&#xf005;&#xf005;&#xf005;&#xf005;&#xf006;</option>
+						<option value="5">&#xf005;&#xf005;&#xf005;&#xf005;&#xf005;</option>
+					</select>
 					{% csrf_token %}
 					{{ reviewform.review }}
 					{{ reviewform.m_id }}
