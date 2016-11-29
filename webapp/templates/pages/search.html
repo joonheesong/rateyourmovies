@@ -11,6 +11,8 @@
 {% endblock current_css %}
 
 {% block content %}
+	<!-- BODY -->
+	<div class="container">
 		<section class="search_bar">
 			<section class="search">
 				<div class="input input--makiko">
@@ -39,9 +41,10 @@
 								<div class="fa fa-picture-o fa-5x" aria-hidden="true"></div>
 							</div>
 						{% endif %}
-						<button class="result__action"><a href="#">Choose</a></button>
+						<button class="result__action"><a href="/review?movie={{val}}">Choose</a></button>
 					</div>
 				{% endfor %}
 			</div>
 		</section>
+	</div>
 {% endblock content %}

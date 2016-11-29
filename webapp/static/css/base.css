@@ -4,12 +4,10 @@ a { text-decoration: none; color: black; }
 
 .clearfix:before, .clearfix:after { display: table;  content: ''; }
 .clearfix:after { clear: both; }
-.cf:after {
+.clearfix:after {
 	content: "";
 	display: block;
 	clear: both;
-	font-size: 0;
-	line-height: 0;
 }
 
 /* FONTS

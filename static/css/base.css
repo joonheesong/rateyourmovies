@@ -69,6 +69,10 @@ dd.logout {
 	display:none !important;
 }
 
+dd.search {
+	display:none !important;
+}
+
 /* Body CSS */
 
 .container {

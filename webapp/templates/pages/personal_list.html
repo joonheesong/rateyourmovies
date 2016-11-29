@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block current_css %}
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/list.css?{% now 'U' %}" />
+{% endblock current_css %}
+
+{% block perspective_start %}
+<div id="perspective" class="perspective effect-moveleft">
+	<div class="container">
+		<div class="wrapper">
+{% endblock perspective_start %}
+
+{% block content %}
+			<div class="main clearfix">
+			</div> <!-- main -->
+		</div> <!-- wrapper -->
+	</div> <!-- container -->
+	<nav class="outer-nav right vertical">
+	</nav>
+{% endblock content %}
+
+{% block perspective_end %}
+</div>
+{% endblock perspective_end %}
+
+{% block js %}
+		<script src="js/classie.js"></script>
+		<script src="js/menu.js"></script>
+{% endblock %}

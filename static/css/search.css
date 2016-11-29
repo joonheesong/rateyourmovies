@@ -1,0 +1,34 @@
+dd.register {
+	display: none !important;
+}
+
+dd.login {
+	display: none !important;
+}
+
+dd.search {
+	display: inline !important;
+}
+
+dd.logout {
+	display: inline !important;
+}
+
+body {
+	background: url('../image/searchbg.png');
+	background-position: center top;
+	background-size: cover;
+}
+
+.search_bar {
+	width:100%;
+	padding: 3em 0;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.search {
+    display: inline-block;
+    text-align: center;
+    width:100%;
+}

@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from webapp.forms import RegistrationForm
+from webapp.forms import RegistrationForm, ReviewForm
 from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 import tmdbsimple as tmdb
-from webapp.models import Movie
+from webapp.models import Movie, Posting, Users
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+from ast import literal_eval
 
 # Set up API key for tmdb
 tmdb.API_KEY = settings.MY_API_KEY
@@ -24,6 +27,7 @@ def signup(request):
 		userform = RegistrationForm(request.POST)
 		if userform.is_valid():
 			user = userform.save()
+			Users(username=user.username, password=user.password, email=user.email).save()
 			return HttpResponseRedirect(
 				reverse('signup_ok')
 			)
@@ -73,25 +77,27 @@ def search_movie(request):
 		for result in response['results']:
 			m_id = result['id']
 			title = result['original_title']
-			poster_path = result['poster_path']
 			release_date = result['release_date']
+
+			if result['poster_path']:
+				poster_path = settings.IMG_SRC + result['poster_path']
+			else:
+				poster_path = "none"
+
 			if release_date != "" and release_date <= settings.TODAY:
 				# add to movies if it is a new moive
 				found = Movie.objects.all().filter(m_id=result['id'])
-				if found is None:
-					found = Model(m_id=m_id,
+				if not found:
+					found = Movie(m_id=m_id,
 								  title=title,
 								  poster_path=poster_path,
 								  release_date=release_date)
 					found.save()
+
 				search_result[i] = {"id": m_id,
 									"title": title,
+									"poster_path": poster_path,
 									"release_date": release_date}
-				if poster_path:
-					search_result[i]['poster_path'] = settings.IMG_SRC + poster_path
-				else:
-					search_result[i]['poster_path'] = "none"
-
 				i += 1
 
 		return render(request, 'pages/search.html', {'search_result': search_result})
@@ -99,11 +105,66 @@ def search_movie(request):
 	return render(request, 'pages/search.html', {'search_result': {}})
 
 
+def review_movie(request):
+	if request.method =="POST":
+		reviewform = ReviewForm(request.POST)
+		new_post = None
+
+		if reviewform.is_valid():
+			m_id = Movie.objects.get(m_id=reviewform.cleaned_data['m_id'])
+			user = Users.objects.get(username=request.user.username)
+			review = reviewform.cleaned_data['review']
+
+			try:
+				new_post = Posting.objects.get(m_id=m_id, username=user)
+				new_post.new_review(new_review=review)
+				new_post.save()
+			except ObjectDoesNotExist:
+				new_post = Posting(m_id=m_id, username=user, review=review)
+				new_post.save()
+			
+		listing_url = '/listing?m_id=' + str(new_post.m_id.m_id)
+		
+		return HttpResponseRedirect(listing_url)
+
+		''' else:
+			will implement error later
+		'''
+
+	elif request.method == "GET":
+		movie = request.GET['movie']
+		movie = literal_eval(movie)
+
+		reviewform = ReviewForm(initial={'m_id': movie['id']})
+
+		return render(request, 'pages/review.html', {'title': movie['title'],
+												 'poster_path': movie['poster_path'],
+												 'release_date': movie['release_date'],
+												 'm_id': movie['id'],
+												 'reviewform': reviewform })
+
+def listing(request):
+	m_id = int(request.GET['m_id'])
+	# Find current movie
+	movie = Movie.objects.get(m_id=m_id)
+
+	# Find all movies that user rated.
+	user = Users.objects.get(username=request.user.username)
+	current_review = Posting.objects.get(m_id=movie, username=user)
+	movie_list = {}
+	for review in Posting.objects.filter(username=user):
+		movie_list[review.m_id.m_id] = review.m_id.title
 
 
+	print("********** MOVIE ***********")
+	print(movie)
+	print("******** MOVIE_LIST ********")
+	print(movie_list)
+	print("****************************")
 
-
-
+	return HttpResponseRedirect('/home/')
+	#return render(request, 'pages/personal_list.html', {'movie': movie,
+	#													'movie_list': movie_list})
 
 
 

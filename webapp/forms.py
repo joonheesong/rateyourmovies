@@ -1,6 +1,7 @@
 from django import forms            
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from webapp.models import Posting
 
 class RegistrationForm(UserCreationForm):
 	username = forms.CharField(
@@ -18,9 +19,10 @@ class RegistrationForm(UserCreationForm):
 	def save(self, commit=True):
 		user = super(RegistrationForm, self).save(commit=False)
 		user.email = self.cleaned_data['email']
-
 		if commit:
 			user.save()
-
-
 		return user
+
+class ReviewForm(forms.Form):
+	review = forms.CharField(widget=forms.Textarea(attrs={'class': 'input__field'}))
+	m_id = forms.IntegerField(widget=forms.HiddenInput())

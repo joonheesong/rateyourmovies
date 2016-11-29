@@ -12,14 +12,14 @@ released_before = '-'.join([str(current_time.year), str(current_time.month), str
 
 
 search = tmdb.Search()
-response = search.movie(query="hi")
+response = search.movie(query="movie")
 
 for result in response['results']:
 	print("************************************************************************")
-	print(result['id'])
-	print(result['original_title'])
-	print(result['poster_path'])
-	print(result['release_date'])
+	rd = result['release_date']
+
+	if rd == "2016-11-26":
+		print(result['title'])
 	print("************************************************************************")
 
 #print(beast.credits()['crew'])

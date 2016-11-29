@@ -7,6 +7,8 @@
 {% endblock current_css %}
 
 {% block content %}
+	<!-- BODY -->
+	<div class="container">
 		<div class="registration">
 			<form class="registerform" id="signup" method="post" action="{% url 'signup' %}">
 				{% csrf_token %}
@@ -45,6 +47,7 @@
 				</span>
 			</form>
 		</div>
+	</div>
 {% endblock content %}
 {% block js %}
 	<script src="/static/js/classie.js"></script>

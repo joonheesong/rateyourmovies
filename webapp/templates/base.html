@@ -13,6 +13,8 @@
 
 
 <body>
+{% block perspective_start %}
+{% endblock %}
 	<!-- HEADER -->
 	<div class="wrap headerwrap">
 		<header class="header cf">
@@ -31,12 +33,10 @@
 	</div>
 	<!-- HEADER -->
 
-	<!-- BODY -->
-	<div class="container">
-		{% block content %}
-		{% endblock %}
-	</div>
-
+	{% block content %}
+	{% endblock %}
+{% block perspective_end %}
+{% endblock %}
 	{% block js %}
 	{% endblock %}
 </body>

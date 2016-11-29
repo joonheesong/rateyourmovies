@@ -7,30 +7,33 @@
 {% endblock current_css %}
 
 {% block content %}
-	<!-- Login Form -->
-	<div class="content-login">
-		<form class="loginform" action="/login/" method="post">
-			{% csrf_token %}
-			<span class="input input--chisato">
-				<label class="input__label input__label--chisato" for="username">
-					<span class="input__label-content input__label-content--chisato" data-content="Username">Username</span>
-				</label>
-				<input class="input__field input__field--chisato" type="text" id="username" name="username">
-			</span>
+	<!-- BODY -->
+	<div class="container">
+		<!-- Login Form -->
+		<div class="content-login">
+			<form class="loginform" action="/login/" method="post">
+				{% csrf_token %}
+				<span class="input input--chisato">
+					<label class="input__label input__label--chisato" for="username">
+						<span class="input__label-content input__label-content--chisato" data-content="Username">Username</span>
+					</label>
+					<input class="input__field input__field--chisato" type="text" id="username" name="username">
+				</span>
 
-			<span class="input input--chisato">
-				<label class="input__label input__label--chisato" for="password">
-					<span class="input__label-content input__label-content--chisato" data-content="Password">Password</span>
-				</label>
-				<input class="input__field input__field--chisato" type="password" name="password" id="password">
-			</span>
+				<span class="input input--chisato">
+					<label class="input__label input__label--chisato" for="password">
+						<span class="input__label-content input__label-content--chisato" data-content="Password">Password</span>
+					</label>
+					<input class="input__field input__field--chisato" type="password" name="password" id="password">
+				</span>
 
-			<span class ="box">
-				<button class="button button--winona button--text-thick button--inverted" data-text="Login" type="submit">
-					<span>Login</span>
-				</button>
-			</span>
-		</form>
+				<span class ="box">
+					<button class="button button--winona button--text-thick button--inverted" data-text="Login" type="submit">
+						<span>Login</span>
+					</button>
+				</span>
+			</form>
+		</div>
 	</div>
 {% endblock content %}
 

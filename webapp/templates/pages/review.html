@@ -2,9 +2,26 @@
 
 
 {% block current_css %}
-
+	<link rel="stylesheet" type="text/css" media='all' href="/static/css/review.css?{% now 'U' %}" />
 {% endblock current_css %}
 
 {% block content %}
+	<!-- BODY -->
+	<div class="container">
+		<section class="review__section">
+			<div class="review">
+				<h2 style="color:#fff">{{ title }}</h2>
+			</div>
 
+
+			<div class="review__input">
+				<form id="review_form", action="/review/" method="post" accept-charset="utf-8">
+					{% csrf_token %}
+					{{ reviewform.review }}
+					{{ reviewform.m_id }}
+					<button class="review__action" type="submit">Submit</button>
+				</form>
+			</div>
+		</section>
+	</div>
 {% endblock content %}
